@@ -9,7 +9,7 @@ Intended to be used for lead-capture from a static-html website.
 
 ## Running
 
-    $ docker run -p 8020:4567 casmacc/lead_capture
+    $ docker run -p 4567:4567 casmacc/lead_capture
 
 ## Environment Variables
 
