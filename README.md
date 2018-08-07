@@ -1,2 +1,17 @@
-# sinatra_helloworld
-Simple Dockerized Hello World Webapp
+# lead_capture
+
+Simple Lead Capture Service
+
+Appends the form data as JSON to the end of a data file, then redirects to a
+landing page.
+
+Intended to be used for lead-capture from a static-html website.
+
+## Running
+
+    $ docker run -p 8020:4567 casmacc/lead_capture
+
+## Environment Variables
+
+    REDIRECT_PATH - the redirect page after 
+    OUTPUT_DIR    - the directory which holds the data file
