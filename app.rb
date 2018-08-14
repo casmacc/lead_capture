@@ -1,4 +1,5 @@
 require 'sinatra'
+require 'json'
 
 # ENV VARS:
 # - ACCESS_PWD    - for data access at `/data/:pwd`
@@ -43,7 +44,7 @@ end
 
 post '/formcap' do
   File.open(file_path, 'a') do |f|
-    f.puts params.merge({'time' => Time.now.strftime('%y-%m-%d_%H:%M:%S')}).inspect
+    f.puts params.merge({'time' => Time.now.strftime('%y-%m-%d_%H:%M:%S')}).to_json
   end
   redirect redirect_path
 end
