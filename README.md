@@ -19,5 +19,5 @@ Intended to be used for lead-capture from a static-html website.
 
 ## Building
 
-    $ docker build . -t casmacc/lead_capture
-    $ docker push
+    $ docker build -t casmacc/lead_capture .
+    $ docker push casmacc/lead_capture
