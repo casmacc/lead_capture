@@ -1,13 +1,9 @@
-# TO TEST...
-# start the server in a tmux session `ruby app.rb`
-# then:
-# - detach from the tmux session
-# - logout
-# - test in your browser `http://<yourserver>:6789`
-# - submit the form at https://bugmark.net/ci
-#
-
 require 'sinatra'
+
+# ENV VARS:
+# - ACCESS_PWD    - for data access at `/data/:pwd`
+# - OUTPUT_DIR    - data output directory
+# - REDIRECT_PATH - redirect path after data capture
 
 redirect_path = ENV['REDIRECT_PATH'] || 'https://casmacc.io'
 output_dir    = ENV['OUTPUT_DIR']    || '/tmp/lead_capture'
@@ -36,6 +32,13 @@ get '/' do
     <tr><td>SOURCE</td><td>#{link}</td></tr>
     </table>
   HTML
+end
+
+get '/data/:pwd' do
+  return 'NO PASSWORD SET'       if ENV['ACCESS_PWD'].nil?
+  return 'UNRECOGNIZED PASSWORD' if params['pwd'] != ENV['ACCESS_PWD']
+  return '{}' unless File.exist?(file_path)
+  File.read(file_path)
 end
 
 post '/formcap' do
