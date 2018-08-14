@@ -15,3 +15,9 @@ Intended to be used for lead-capture from a static-html website.
 
     REDIRECT_PATH - the redirect page after 
     OUTPUT_DIR    - the directory which holds the data file
+    ACCESS_PWD    - password to view `/data/:pwd`
+
+## Building
+
+    $ docker build . -t casmacc/lead_capture
+    $ docker push
